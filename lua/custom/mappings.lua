@@ -18,7 +18,47 @@ M.dap = {
     ["<leader>dr"] = {
       "<cmd> DapContinue <CR>",
       "Start or continue the debugger",
-    }
+    },["gD"] = {
+      function()
+        vim.lsp.buf.declaration()
+      end,
+      "LSP declaration",
+    },
+
+    ["gd"] = {
+      function()
+        vim.lsp.buf.definition()
+      end,
+      "LSP definition",
+    },
+
+    ["K"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "LSP hover",
+    },
+
+    ["gi"] = {
+      function()
+        vim.lsp.buf.implementation()
+      end,
+      "LSP implementation",
+    },
+
+    ["<leader>ls"] = {
+      function()
+        vim.lsp.buf.signature_help()
+      end,
+      "LSP signature help",
+    },
+
+    ["<leader>D"] = {
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      "LSP definition type",
+    },
   }
 }
 
@@ -61,7 +101,7 @@ M.gopher = {
     ["<leader>gsy"] = {
       "<cmd> GoTagAdd yaml <CR>",
       "Add yaml struct tags"
-    }
+    },
   }
 }
 
