@@ -33,5 +33,9 @@ lspconfig.clangd.setup {
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
-  filetypes = {"cpp", "c"}
+  filetypes = {"cpp", "c"},
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  },
 }
