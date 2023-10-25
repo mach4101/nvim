@@ -1,11 +1,30 @@
 local M = {}
 
+
 M.dap = {
   plugin = true,
   n = {
     ["<leader>db"] = {
       "<cmd> DapToggleBreakpoint <CR>",
       "Add breakpoint at line"
+    },
+    ["<leader>dc"] = {
+      "<cmd> DapContinue <CR>",
+      "start debug"
+    },
+    ["<leader>dn"] = {
+      "<cmd> DapStepOver <CR>",
+      "step over"
+    },
+    ["<leader>di"] = {
+      "<cmd> DapStepInto <CR>",
+      "step into"
+    },["<leader>do"] = {
+      "<cmd> DapStepOut <CR>",
+      "step out"
+    },["<leader>dt"] = {
+      "<cmd> DapTerminate <CR>",
+      "terminate debug"
     },
     ["<leader>dus"] = {
       function ()
@@ -18,7 +37,8 @@ M.dap = {
     ["<leader>dr"] = {
       "<cmd> DapContinue <CR>",
       "Start or continue the debugger",
-    },["gD"] = {
+    },
+    ["gD"] = {
       function()
         vim.lsp.buf.declaration()
       end,
@@ -76,7 +96,7 @@ M.dap_go = {
         require('dap-go').dubug_last()
       end,
       "Debug last go test"
-    }
+    },
   }
 }
 

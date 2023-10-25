@@ -18,7 +18,7 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-    config = function(_, _)
+    init = function()
       require("core.utils").load_mappings("dap")
     end
   },
@@ -43,7 +43,8 @@ local plugins = {
       require("dap-go").setup(opts)
       require("core.utils").load_mappings("dap_go")
     end
-  },{
+  },
+  {
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
     dependencies = {
