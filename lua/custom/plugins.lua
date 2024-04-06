@@ -5,7 +5,7 @@ local plugins = {
       ensure_installed = {
         "debugpy",
         "black",
-        "mypy",
+        -- "mypy",
         "ruff",
         "pyright",
         "gopls",
@@ -83,7 +83,10 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    },
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
@@ -97,6 +100,40 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
+    end
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim"
+    },
+    config = function()
+      require("chatgpt").setup({
+        api_key_cmd = "echo $OPENAI_API_KEY",
+        api_host_cmd = "echo https://api.v36.cm",
+
+        openai_params = {
+          model = "gpt-4-turbo-preview",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          max_tokens = 1000,
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+        openai_edit_params = {
+          model = "gpt-4-turbo-preview",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+      })
     end
   }
 }
