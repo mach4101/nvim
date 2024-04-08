@@ -25,6 +25,17 @@ lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},
+  settings = {
+    pyright = {
+      disableOrganizeImports = true, -- using ruff!
+    },
+    python = {
+      analysis = {
+        ignore = { '*' },
+        typeCheckingMode = 'off', -- using mypy?
+      },
+    },
+  },
 }
 
 lspconfig.clangd.setup {

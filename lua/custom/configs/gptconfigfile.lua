@@ -16,7 +16,6 @@ local gptconfig = {
       },
     },
     chat = {
-      welcome_message = WELCOME_MESSAGE,
       loading_text = "Loading, please wait ...",
       question_sign = "", -- 🙂
       answer_sign = "ﮧ", -- 🤖
@@ -43,7 +42,7 @@ local gptconfig = {
         yank_last_code = "<C-k>",
         scroll_up = "<C-u>",
         scroll_down = "<C-d>",
-        new_session = "<C-,>",
+        new_session = "<S-m>",
         cycle_windows = "<Tab>",
         cycle_modes = "<C-f>",
         next_message = "<C-j>",
