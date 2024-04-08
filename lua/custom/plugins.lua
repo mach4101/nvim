@@ -112,30 +112,10 @@ local plugins = {
       "nvim-telescope/telescope.nvim"
     },
     config = function()
-      require("chatgpt").setup({
-        api_key_cmd = "echo $OPENAI_API_KEY",
-        api_host_cmd = "echo https://api.v36.cm",
-
-        openai_params = {
-          model = "gpt-4-turbo-preview",
-          frequency_penalty = 0,
-          presence_penalty = 0,
-          max_tokens = 1000,
-          temperature = 0,
-          top_p = 1,
-          n = 1,
-        },
-        openai_edit_params = {
-          model = "gpt-4-turbo-preview",
-          frequency_penalty = 0,
-          presence_penalty = 0,
-          temperature = 0,
-          top_p = 1,
-          n = 1,
-        },
-      })
+      local opt = require("custom.configs.gptconfigfile")
+      require("chatgpt").setup(opt)
     end
-  }
+  },
 }
 
 return plugins
