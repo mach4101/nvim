@@ -32,7 +32,7 @@ lspconfig.pyright.setup {
     python = {
       analysis = {
         ignore = { '*' },
-        typeCheckingMode = 'off', -- using mypy?
+        typeCheckingMode = 'off', -- using mypy, 可以配置~/.config/mypy/config，忽略import错误等
       },
     },
   },
