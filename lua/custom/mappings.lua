@@ -83,14 +83,14 @@ M.dap = {
       "<cmd> ChatGPT <CR>",
       "open chatgpt session",
     },
-    ["<leader>chi"] = {
-      "<cmd> ChatGPTEditWithInstructions <CR>",
-      "open chatgpt edit with instructions",
-    },
-    ["<leader>chc"] = {
-      "<cmd> ChatGPTCompleteCode <CR>",
-      "open chatgpt code completion",
-    },
+    -- ["<leader>chi"] = {
+    --   "<cmd> ChatGPTEditWithInstructions <CR>",
+    --   "open chatgpt edit with instructions",
+    -- },
+    -- ["<leader>chc"] = {
+    --   "<cmd> ChatGPTCompleteCode <CR>",
+    --   "open chatgpt code completion",
+    -- },
   }
 }
 

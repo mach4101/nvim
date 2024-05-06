@@ -147,7 +147,7 @@ local gptconfig = {
       },
     },
     openai_params = {
-      model = "gpt-4-turbo-preview",
+      model = "gpt-4-turbo-2024-04-09",
       frequency_penalty = 0,
       presence_penalty = 0,
       max_tokens = 1300,
@@ -156,7 +156,7 @@ local gptconfig = {
       n = 1,
     },
     openai_edit_params = {
-      model = "gpt-4-turbo-preview",
+      model = "gpt-4-turbo-2024-04-09",
       frequency_penalty = 0,
       presence_penalty = 0,
       temperature = 0,
