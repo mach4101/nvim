@@ -17,6 +17,22 @@ local plugins = {
     },
   },
   {
+    "echasnovski/mini.icons",
+    config = function()
+      require("mini.icons").setup()
+    end,
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      icons = {
+        breadcrumb = "»",
+        separator = "➜",
+        group = "+",
+      },
+    },
+  },
+  {
     "mfussenegger/nvim-dap",
     init = function()
       require("core.utils").load_mappings("dap")
@@ -133,10 +149,8 @@ local plugins = {
     opts = {
       -- ---@type string
       arg = "leetcode.nvim",
-
       ---@type lc.lang
       lang = "cpp",
-
       cn = { -- leetcode.cn
           enabled = true, ---@type boolean
           translator = true, ---@type boolean

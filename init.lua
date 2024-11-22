@@ -21,23 +21,47 @@ vim.opt.rtp:prepend(lazypath)
 require "plugins"
 
 
--- 尝试配置which-key,
+-- 保存原始的 vim.notify 函数
+local original_notify = vim.notify
+
+-- 创建自定义的 vim.notify 函数
+vim.notify = function(msg, level, opts)
+  -- 定义要过滤的插件关键字
+  local ignore_plugins = {
+    "which-key",
+    -- "null-ls"
+  }
+
+  -- 检查消息是否包含要忽略的插件名称
+  for _, plugin in ipairs(ignore_plugins) do
+    if msg:find(plugin, 1, true) then
+      return  -- 忽略此消息
+    end
+  end
+
+  -- 调用原始的 vim.notify 函数显示其他消息
+  original_notify(msg, level, opts)
+end
+
+
 local wk = require("which-key")
+
 wk.register({
-c = {
-  name = "ChatGPT",
-    e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-    g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
-    t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
-    k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
-    d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
-    a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
-    o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
-    s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-    f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-    x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
-    r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
-    l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
+  c = {
+    name = "ChatGPT",
+    a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests" },
+    d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" },
+    e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
+    -- c = { "<cmd>ChatGPTCompleteCode<CR>", "complete code"},
+    f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs" },
+    g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction" },
+    k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords" },
+    l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis" },
+    o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code" },
+    r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit" },
+    s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize" },
+    t = { "<cmd>ChatGPTRun translate<CR>", "Translate" },
+    x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code" },
   },
-})
+}, { prefix = "<leader>" })
 
